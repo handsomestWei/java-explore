@@ -6,22 +6,22 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * juc¹¤¾ßÀà£ºÏß³Ì¼ä½»»»Êı¾İ
+ * jucå·¥å…·ç±»ï¼šçº¿ç¨‹é—´äº¤æ¢æ•°æ®
  */
 public class ExchangerTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        // ´´½¨½»»»Æ÷
+        // åˆ›å»ºäº¤æ¢å™¨
         Exchanger<String> ex = new Exchanger<>();
 
         ExecutorService service = Executors.newFixedThreadPool(2);
         service.execute(() -> {
             try {
-                String sendMsg = "Ïß³Ì1·¢ËÍ";
-                // ½»»»ÏûÏ¢
+                String sendMsg = "çº¿ç¨‹1å‘é€";
+                // äº¤æ¢æ¶ˆæ¯
                 String reciveMsg = ex.exchange(sendMsg);
-                System.out.println("Ïß³Ì1½ÓÊÕ£º" + reciveMsg);
+                System.out.println("çº¿ç¨‹1æ¥æ”¶ï¼š" + reciveMsg);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -29,10 +29,10 @@ public class ExchangerTest {
         service.execute(() -> {
             try {
                 TimeUnit.SECONDS.sleep(2);
-                String sendMsg = "Ïß³Ì2·¢ËÍ";
-                // ½»»»ÏûÏ¢
+                String sendMsg = "çº¿ç¨‹2å‘é€";
+                // äº¤æ¢æ¶ˆæ¯
                 String reciveMsg = ex.exchange(sendMsg);
-                System.out.println("Ïß³Ì2½ÓÊÕ£º" + reciveMsg);
+                System.out.println("çº¿ç¨‹2æ¥æ”¶ï¼š" + reciveMsg);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

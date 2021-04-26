@@ -5,13 +5,13 @@ import sun.reflect.Reflection;
 
 /**
  * @see sun.reflect.CallerSensitive</br>
- * @see java.lang.Thread#getContextClassLoader()ÓĞÓÃµ½</br>
- * @CallerSensitive ±ØĞëÓÉÆô¶¯Ààclassloader¼ÓÔØ£¨Èçrt.jar£©£¬²Å¿ÉÒÔ±»Ê¶±ğ</br>
- *                  Reflection.getCallerClass()·½·¨µ÷ÓÃËùÔÚµÄ·½·¨±ØĞëÓÃ@CallerSensitive½øĞĞ×¢½â£¬Í¨¹ı´Ë·½·¨»ñÈ¡classÊ±»áÌø¹ıÁ´Â·ÉÏËùÓĞµÄÓĞ@CallerSensitive×¢½âµÄ·½·¨µÄÀà£¬Ö±µ½Óöµ½µÚÒ»¸öÎ´Ê¹ÓÃ¸Ã×¢½âµÄÀà</br>
+ * @see java.lang.Thread#getContextClassLoader()æœ‰ç”¨åˆ°</br>
+ * @CallerSensitive å¿…é¡»ç”±å¯åŠ¨ç±»classloaderåŠ è½½ï¼ˆå¦‚rt.jarï¼‰ï¼Œæ‰å¯ä»¥è¢«è¯†åˆ«</br>
+ *                  Reflection.getCallerClass()æ–¹æ³•è°ƒç”¨æ‰€åœ¨çš„æ–¹æ³•å¿…é¡»ç”¨@CallerSensitiveè¿›è¡Œæ³¨è§£ï¼Œé€šè¿‡æ­¤æ–¹æ³•è·å–classæ—¶ä¼šè·³è¿‡é“¾è·¯ä¸Šæ‰€æœ‰çš„æœ‰@CallerSensitiveæ³¨è§£çš„æ–¹æ³•çš„ç±»ï¼Œç›´åˆ°é‡åˆ°ç¬¬ä¸€ä¸ªæœªä½¿ç”¨è¯¥æ³¨è§£çš„ç±»</br>
  */
 public class CallerSensitiveTest {
 
-    // ĞèÒªÌí¼Ójvm²ÎÊı-Xbootclasspath/a:xxx\my-java-explore\target\classes
+    // éœ€è¦æ·»åŠ jvmå‚æ•°-Xbootclasspath/a:xxx\my-java-explore\target\classes
     @SuppressWarnings("deprecation")
     @CallerSensitive
     public static void main(String[] args) {

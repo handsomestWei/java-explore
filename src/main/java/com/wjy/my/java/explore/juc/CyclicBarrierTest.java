@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * juc¹¤¾ßÀà£º¿ÉÑ­»·ÀûÓÃµÄÆÁÕÏ¡£µ½´ïÆÁÕÏµãÔò·Å¿ªÆÁÕÏ
+ * jucå·¥å…·ç±»ï¼šå¯å¾ªç¯åˆ©ç”¨çš„å±éšœã€‚åˆ°è¾¾å±éšœç‚¹åˆ™æ”¾å¼€å±éšœ
  */
 public class CyclicBarrierTest {
 
@@ -15,8 +15,8 @@ public class CyclicBarrierTest {
 
         int parties = 3;
         CyclicBarrier cb = new CyclicBarrier(parties, () -> {
-            // ·Å¿ªÆÁÕÏÊ±´¥·¢
-            System.out.println("·Å¿ªÆÁÕÏ");
+            // æ”¾å¼€å±éšœæ—¶è§¦å‘
+            System.out.println("æ”¾å¼€å±éšœ");
         });
 
         ExecutorService pool = Executors.newFixedThreadPool(parties);
@@ -24,10 +24,10 @@ public class CyclicBarrierTest {
             pool.execute(() -> {
                 try {
                     TimeUnit.SECONDS.sleep(new Random().nextInt(5));
-                    System.out.println(Thread.currentThread().getName() + "ÔÚÆÁÕÏµãÇ°µÈ´ı");
-                    // ×èÈû¡£µ½´ïÆÁÕÏµãÔò·Å¿ªÆÁÕÏ»½ÆğÏß³Ì
+                    System.out.println(Thread.currentThread().getName() + "åœ¨å±éšœç‚¹å‰ç­‰å¾…");
+                    // é˜»å¡ã€‚åˆ°è¾¾å±éšœç‚¹åˆ™æ”¾å¼€å±éšœå”¤èµ·çº¿ç¨‹
                     cb.await();
-                    System.out.println(Thread.currentThread().getName() + "Í¨¹ıÆÁÕÏ");
+                    System.out.println(Thread.currentThread().getName() + "é€šè¿‡å±éšœ");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -35,7 +35,7 @@ public class CyclicBarrierTest {
         }
         pool.shutdown();
 
-        // ÖØÖÃ£¬¿É¸´ÓÃ
+        // é‡ç½®ï¼Œå¯å¤ç”¨
         cb.reset();
 
     }

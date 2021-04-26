@@ -6,16 +6,16 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * juc¹¤¾ßÀà£ºµ¹¼ÆÊ±»úÖÆ¡£¹¹Ôìº¯Êı´´½¨×ÊÔ´£¬countDown×ÊÔ´¼õÒ»£¬await×èÈûµÈ´ı×ÊÔ´È«²¿Ïû·ÑÍê±Ï
+ * jucå·¥å…·ç±»ï¼šå€’è®¡æ—¶æœºåˆ¶ã€‚æ„é€ å‡½æ•°åˆ›å»ºèµ„æºï¼ŒcountDownèµ„æºå‡ä¸€ï¼Œawaité˜»å¡ç­‰å¾…èµ„æºå…¨éƒ¨æ¶ˆè´¹å®Œæ¯•
  */
 public class CountDownLatchTest {
 
     public static void main(String[] args) {
 
-        // ¿ªÊ¼ĞÅºÅÁ¿
+        // å¼€å§‹ä¿¡å·é‡
         int iStart = 1;
         CountDownLatch cInit = new CountDownLatch(iStart);
-        // ×¼±¸Íê±ÏĞÅºÅÁ¿
+        // å‡†å¤‡å®Œæ¯•ä¿¡å·é‡
         int iReady = 4;
         CountDownLatch cReady = new CountDownLatch(iReady);
 
@@ -24,13 +24,13 @@ public class CountDownLatchTest {
             pool.execute(() -> {
                 try {
                     String name = Thread.currentThread().getName();
-                    System.out.printf("¡¾%s¡¿µÈ´ı\n", name);
-                    // µÈ´ıÊÍ·Å×ÊÔ´
+                    System.out.printf("ã€%sã€‘ç­‰å¾…\n", name);
+                    // ç­‰å¾…é‡Šæ”¾èµ„æº
                     cInit.await();
-                    System.out.printf("¡¾%s¡¿¿ªÊ¼\n", name);
-                    // ÊÍ·Å×ÊÔ´
+                    System.out.printf("ã€%sã€‘å¼€å§‹\n", name);
+                    // é‡Šæ”¾èµ„æº
                     cReady.countDown();
-                    System.out.printf("¡¾%s¡¿½áÊø\n", name);
+                    System.out.printf("ã€%sã€‘ç»“æŸ\n", name);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -38,13 +38,13 @@ public class CountDownLatchTest {
         }
 
         try {
-            System.out.println("¿ªÊ¼");
-            // ÊÍ·Å×ÊÔ´
+            System.out.println("å¼€å§‹");
+            // é‡Šæ”¾èµ„æº
             cInit.countDown();
-            // µÈ´ıÊÍ·Å×ÊÔ´
+            // ç­‰å¾…é‡Šæ”¾èµ„æº
             cReady.await();
             TimeUnit.SECONDS.sleep(1);
-            System.out.println("ËùÓĞÏß³Ì½áÊø£¡");
+            System.out.println("æ‰€æœ‰çº¿ç¨‹ç»“æŸï¼");
         } catch (Exception e) {
             e.printStackTrace();
         }

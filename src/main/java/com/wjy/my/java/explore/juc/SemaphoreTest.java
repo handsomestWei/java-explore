@@ -4,14 +4,14 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 /**
- * juc¹¤¾ßÀà£ºĞÅºÅÁ¿</br>
- * Ä£ÄâÍ£³µ³¡Í£³µ
+ * jucå·¥å…·ç±»ï¼šä¿¡å·é‡</br>
+ * æ¨¡æ‹Ÿåœè½¦åœºåœè½¦
  */
 public class SemaphoreTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        // ×ÊÔ´×ÜÁ¿
+        // èµ„æºæ€»é‡
         int permits = 3;
         Semaphore sp = new Semaphore(permits);
 
@@ -19,27 +19,27 @@ public class SemaphoreTest {
             Thread t = new Thread(() -> {
                 String name = Thread.currentThread().getName();
                 try {
-                    System.out.printf("¡¾%s¡¿»¶Ó­½øÈëÍ£³µ³¡£¬µ±Ç°Ê£Óà³µÎ»¡¾%d¡¿\n", name, sp.availablePermits());
-                    // ÅĞ¶Ï×ÊÔ´Ê¹ÓÃÁ¿
+                    System.out.printf("ã€%sã€‘æ¬¢è¿è¿›å…¥åœè½¦åœºï¼Œå½“å‰å‰©ä½™è½¦ä½ã€%dã€‘\n", name, sp.availablePermits());
+                    // åˆ¤æ–­èµ„æºä½¿ç”¨é‡
                     while (sp.availablePermits() <= 0) {
-                        System.out.printf("³µÎ»²»×ã£¬Çë¡¾%s¡¿ÄÍĞÄµÈ´ı\n", name);
+                        System.out.printf("è½¦ä½ä¸è¶³ï¼Œè¯·ã€%sã€‘è€å¿ƒç­‰å¾…\n", name);
                         Thread.sleep(new Random().nextInt(2 * 1000));
                     }
 
-                    // ÉêÇë×ÊÔ´
+                    // ç”³è¯·èµ„æº
                     sp.acquire(1);
 
-                    System.out.printf("¡¾%s¡¿³É¹¦½øÈëÍ£³µ³¡\n", name);
+                    System.out.printf("ã€%sã€‘æˆåŠŸè¿›å…¥åœè½¦åœº\n", name);
                     Thread.sleep(new Random().nextInt(8 * 1000));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
-                // ÊÍ·Å×ÊÔ´
+                // é‡Šæ”¾èµ„æº
                 sp.release(1);
 
-                System.out.printf("¡¾%s¡¿³É¹¦Ê»³öÍ£³µ³¡\n", name);
-            }, i + "ºÅ³µ");
+                System.out.printf("ã€%sã€‘æˆåŠŸé©¶å‡ºåœè½¦åœº\n", name);
+            }, i + "å·è½¦");
 
             Thread.sleep(1 * 1000);
             t.start();

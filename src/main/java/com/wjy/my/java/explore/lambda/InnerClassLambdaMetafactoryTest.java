@@ -13,7 +13,7 @@ public class InnerClassLambdaMetafactoryTest {
     /**
      * cd xxx\my-java-explore\target\classes</br>
      * java -Djdk.internal.lambda.dumpProxyClasses com/wjy/my/java/explore/lambda/InnerClassLambdaMetafactoryTest</br>
-     * 可以看到lambda表达式运行时生成的临时类InnerClassLambdaMetafactoryTest$$Lambda$1.class
+     * 鍙互鐪嬪埌lambda琛ㄨ揪寮忚繍琛屾椂鐢熸垚鐨勪复鏃剁被InnerClassLambdaMetafactoryTest$$Lambda$1.class
      */
     public static void main(String[] args) {
         List<String> ls = Arrays.asList("qwer", "as");
@@ -21,7 +21,7 @@ public class InnerClassLambdaMetafactoryTest {
         // innerClassTest();
     }
 
-    // 编译生成内部类形式InnerClassLambdaMetafactoryTest$1.class
+    // 缂栬瘧鐢熸垚鍐呴儴绫诲舰寮廔nnerClassLambdaMetafactoryTest$1.class
     // public void innerClassTest() {
     // Consumer<String> c = new Consumer<String>() {
     // @Override

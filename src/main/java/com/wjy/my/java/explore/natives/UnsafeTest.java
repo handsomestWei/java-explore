@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import sun.misc.Unsafe;
 
 /**
- * µ÷ÓÃUnsafeÀà
+ * è°ƒç”¨Unsafeç±»
  */
 public class UnsafeTest {
 
@@ -13,7 +13,7 @@ public class UnsafeTest {
 
         Unsafe unsafe = null;
         try {
-            // ²Î¿¼sun.misc.UnsafeÔ´Âë
+            // å‚è€ƒsun.misc.Unsafeæºç 
             // @CallerSensitive
             // public static Unsafe getUnsafe() {
             // Class<?> caller = Reflection.getCallerClass();
@@ -24,12 +24,12 @@ public class UnsafeTest {
 
             unsafe = Unsafe.getUnsafe();
         } catch (Exception e) {
-            // ²»ÄÜÖ±½Óµ÷ÓÃ¡£·ÇÖ¸¶¨µÄÀà¼ÓÔØÆ÷µ÷ÓÃ£¬Å×³öÒì³£
+            // ä¸èƒ½ç›´æ¥è°ƒç”¨ã€‚éæŒ‡å®šçš„ç±»åŠ è½½å™¨è°ƒç”¨ï¼ŒæŠ›å‡ºå¼‚å¸¸
             e.printStackTrace();
         }
 
         try {
-            // ²Î¿¼sun.misc.UnsafeÔ´Âë
+            // å‚è€ƒsun.misc.Unsafeæºç 
             // public final class Unsafe {
             //
             // private static native void registerNatives();
@@ -42,10 +42,10 @@ public class UnsafeTest {
             //
             // private static final Unsafe theUnsafe = new Unsafe();
 
-            // ¿ÉÒÔ·´Éä»ñÈ¡ÄÚ²¿µÄË½ÓĞ¾²Ì¬Àà
+            // å¯ä»¥åå°„è·å–å†…éƒ¨çš„ç§æœ‰é™æ€ç±»
             Field field = Unsafe.class.getDeclaredFields()[0];
             field.setAccessible(true);
-            // ´«nullÈ¡³östaticÖµ
+            // ä¼ nullå–å‡ºstaticå€¼
             unsafe = (Unsafe) field.get(null);
 
             System.out.println(unsafe.getClass());

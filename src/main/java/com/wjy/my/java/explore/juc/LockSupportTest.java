@@ -4,27 +4,27 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 
 /**
- * juc¹¤¾ßÀà£ºÏß³Ì×èÈûºÍ»½ĞÑ</br>
- * Êµ¼ÊÊ¹ÓÃÁËunsafeÀàµÄparkºÍunpark·½·¨
+ * jucå·¥å…·ç±»ï¼šçº¿ç¨‹é˜»å¡å’Œå”¤é†’</br>
+ * å®é™…ä½¿ç”¨äº†unsafeç±»çš„parkå’Œunparkæ–¹æ³•
  */
 public class LockSupportTest {
-    
-    private static String name = "²âÊÔÏß³Ì";
 
-    public static void main(String[] args) {      
+    private static String name = "æµ‹è¯•çº¿ç¨‹";
+
+    public static void main(String[] args) {
 
         Thread t = new Thread(() -> {
             try {
                 String n = Thread.currentThread().getName();
-                System.out.printf("¡¾%s¡¿Æô¶¯\n", n);
+                System.out.printf("ã€%sã€‘å¯åŠ¨\n", n);
                 TimeUnit.SECONDS.sleep(2);
 
-                // ×èÈû
+                // é˜»å¡
                 LockSupport.park();
 
-                System.out.printf("¡¾%s¡¿±»»½ĞÑ\n", n);
+                System.out.printf("ã€%sã€‘è¢«å”¤é†’\n", n);
                 TimeUnit.SECONDS.sleep(2);
-                System.out.printf("¡¾%s¡¿´¦Àí½áÊø\n", n);
+                System.out.printf("ã€%sã€‘å¤„ç†ç»“æŸ\n", n);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -37,7 +37,7 @@ public class LockSupportTest {
             monitorState(t, new int[] { 0, 3 });
             TimeUnit.SECONDS.sleep(2);
 
-            // »½ĞÑ
+            // å”¤é†’
             LockSupport.unpark(t);
 
             monitorState(t, new int[] { 2, 2 });
@@ -61,7 +61,7 @@ public class LockSupportTest {
                 e.printStackTrace();
             }
         }
-        System.out.printf("¡¾monitor¡¿¡¾%s¡¿ÔËĞĞ×´Ì¬¡¾%s¡¿\n", name, t.getState().name());
+        System.out.printf("ã€monitorã€‘ã€%sã€‘è¿è¡ŒçŠ¶æ€ã€%sã€‘\n", name, t.getState().name());
     }
 
 }

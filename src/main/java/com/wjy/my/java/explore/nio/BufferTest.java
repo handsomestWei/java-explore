@@ -10,8 +10,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Ê¹ÓÃ»º³åÇø¶ÁĞ´ÎÄ¼ş²âÊÔ</br>
- * BufferedInputStreamµÄÄ¬ÈÏ»º³åÇø´óĞ¡ÊÇ8192×Ö½Ú¡£µ±Ã¿´Î¶ÁÈ¡Êı¾İÁ¿½Ó½ü»òÔ¶³¬Õâ¸öÖµÊ±£¬Á½ÕßĞ§ÂÊ¾ÍÃ»ÓĞÃ÷ÏÔ²î±ğÁË¡£</br>
+ * ä½¿ç”¨ç¼“å†²åŒºè¯»å†™æ–‡ä»¶æµ‹è¯•</br>
+ * BufferedInputStreamçš„é»˜è®¤ç¼“å†²åŒºå¤§å°æ˜¯8192å­—èŠ‚ã€‚å½“æ¯æ¬¡è¯»å–æ•°æ®é‡æ¥è¿‘æˆ–è¿œè¶…è¿™ä¸ªå€¼æ—¶ï¼Œä¸¤è€…æ•ˆç‡å°±æ²¡æœ‰æ˜æ˜¾å·®åˆ«äº†ã€‚</br>
  */
 public class BufferTest {
 
@@ -22,25 +22,25 @@ public class BufferTest {
         long startTime1 = System.currentTimeMillis();
         readWrite(from, writeTo[0]);
         long endTime1 = System.currentTimeMillis();
-        System.out.println("Ö±½Ó¶ÁĞ´ºÄÊ±£º" + (endTime1 - startTime1) + "ms");
+        System.out.println("ç›´æ¥è¯»å†™è€—æ—¶ï¼š" + (endTime1 - startTime1) + "ms");
 
         long startTime2 = System.currentTimeMillis();
         readWriteWithBuffer(from, writeTo[1]);
         long endTime2 = System.currentTimeMillis();
-        System.out.println("Ê¹ÓÃ»º³åÇø¶ÁĞ´ºÄÊ±£º" + (endTime2 - startTime2) + "ms");
+        System.out.println("ä½¿ç”¨ç¼“å†²åŒºè¯»å†™è€—æ—¶ï¼š" + (endTime2 - startTime2) + "ms");
 
         for (String filePath : writeTo) {
             File file = new File(filePath);
             if (file.exists()) {
                 file.delete();
-                System.out.println(filePath + " É¾³ı³É¹¦");
+                System.out.println(filePath + " åˆ é™¤æˆåŠŸ");
             }
         }
     }
 
     /***************************************************************************
-     * Ö±½Ó¶ÁÈ¡ÎÄ¼ş
-     * 
+     * ç›´æ¥è¯»å–æ–‡ä»¶
+     *
      * @param from
      * @param to
      * @throws IOException
@@ -69,8 +69,8 @@ public class BufferTest {
     }
 
     /***************************************************************************
-     * Ê¹ÓÃ»º´æÇø¶ÁĞ´ÎÄ¼ş
-     * 
+     * ä½¿ç”¨ç¼“å­˜åŒºè¯»å†™æ–‡ä»¶
+     *
      * @param from
      * @param to
      * @throws IOException

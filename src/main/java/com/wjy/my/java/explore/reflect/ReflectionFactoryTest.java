@@ -9,14 +9,14 @@ import sun.reflect.ReflectionFactory;
 /**
  * @see sun.reflect.ReflectionFactory</br>
  * @see sun.reflect.MethodAccessorGenerator</br>
- *      ÎŞĞèÄ¬ÈÏ¹¹Ôìº¯Êı¾Í¿ÉÒÔ·´ÉäÉú³É¶ÔÏó£¬Õâ¸öÊôĞÔÔÚºÜ¶àµÄĞòÁĞ¿ò¼Ü¿ÉÒÔÊ¹ÓÃ£¬±ÈÈç xml ×ª»»³É bean£¬ÓĞÁËÕâ¸öÌØĞÔ¶Ô beanµÄ class ¾ÍÃ»ÓĞÌØÊâµÄÒªÇó£¬ÎŞĞèÇ¿ÖÆµÄ¹¹Ôìº¯Êı¾Í¿ÉÒÔÉú³ÉÏàÓ¦µÄbeanµÄ¶ÔÏó
+ *      æ— éœ€é»˜è®¤æ„é€ å‡½æ•°å°±å¯ä»¥åå°„ç”Ÿæˆå¯¹è±¡ï¼Œè¿™ä¸ªå±æ€§åœ¨å¾ˆå¤šçš„åºåˆ—æ¡†æ¶å¯ä»¥ä½¿ç”¨ï¼Œæ¯”å¦‚ xml è½¬æ¢æˆ beanï¼Œæœ‰äº†è¿™ä¸ªç‰¹æ€§å¯¹ beançš„ class å°±æ²¡æœ‰ç‰¹æ®Šçš„è¦æ±‚ï¼Œæ— éœ€å¼ºåˆ¶çš„æ„é€ å‡½æ•°å°±å¯ä»¥ç”Ÿæˆç›¸åº”çš„beançš„å¯¹è±¡
  */
 public class ReflectionFactoryTest {
 
     public static void main(String[] args) throws Exception {
 
         ReflectionFactory reflectionFactory = ReflectionFactory.getReflectionFactory();
-        // Ê¹ÓÃMethodAccessorGeneratorµÄgenerateSerializationConstructorÍ¨¹ı×Ö½ÚÂëµÄ·½Ê½Éú³É¹¹Ôìº¯Êı
+        // ä½¿ç”¨MethodAccessorGeneratorçš„generateSerializationConstructoré€šè¿‡å­—èŠ‚ç çš„æ–¹å¼ç”Ÿæˆæ„é€ å‡½æ•°
         Constructor<?> constructor = reflectionFactory
                 .newConstructorForSerialization(Order.class, Object.class.getDeclaredConstructor());
         constructor.setAccessible(true);

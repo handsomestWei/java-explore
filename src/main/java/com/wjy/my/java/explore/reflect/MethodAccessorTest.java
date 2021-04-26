@@ -6,18 +6,18 @@ import java.lang.reflect.Method;
  * @see sun.reflect.DelegatingMethodAccessorImpl</br>
  * @see sun.reflect.NativeMethodAccessorImpl</br>
  * @see https://github.com/openjdk/jdk</br>
- *      Êµ¼ÊµÄMethodAccessorÊµÏÖÓĞÁ½¸ö°æ±¾£¬Ò»¸öÊÇJavaÊµÏÖµÄ£¬ÁíÒ»¸öÊÇnative codeÊµÏÖµÄ¡£</br>
- *      JavaÊµÏÖµÄ°æ±¾ÔÚ³õÊ¼»¯Ê±ĞèÒª½Ï¶àÊ±¼ä£¬µ«³¤¾ÃÀ´ËµĞÔÄÜ½ÏºÃ£»native°æ±¾ÕıºÃÏà·´£¬Æô¶¯Ê±Ïà¶Ô½Ï¿ì£¬µ«ÔËĞĞÊ±¼ä³¤ÁËÖ®ºóËÙ¶È¾Í±È²»¹ıJava°æÁË¡£ÕâÊÇHotSpotµÄÓÅ»¯·½Ê½´øÀ´µÄĞÔÄÜÌØĞÔ£¬Í¬Ê±Ò²ÊÇĞí¶àĞéÄâ»úµÄ¹²Í¬µã£º¿çÔ½native±ß½ç»á¶ÔÓÅ»¯ÓĞ×è°­×÷ÓÃ£¬Ëü¾ÍÏñ¸öºÚÏäÒ»ÑùÈÃĞéÄâ»úÄÑÒÔ·ÖÎöÒ²½«ÆäÄÚÁª£¬ÓÚÊÇÔËĞĞÊ±¼ä³¤ÁËÖ®ºó·´¶øÊÇÍĞ¹Ü°æ±¾µÄ´úÂë¸ü¿ìĞ©¡£</br>
- *      ÎªÁËÈ¨ºâÁ½¸ö°æ±¾µÄĞÔÄÜ£¬SunµÄJDKÊ¹ÓÃÁË¡°inflation¡±µÄ¼¼ÇÉ£ºÈÃJava·½·¨ÔÚ±»·´Éäµ÷ÓÃÊ±£¬¿ªÍ·Èô¸É´ÎÊ¹ÓÃnative°æ£¬µÈ·´Éäµ÷ÓÃ´ÎÊı³¬¹ıãĞÖµÊ±ÔòÉú³ÉÒ»¸ö×¨ÓÃµÄMethodAccessorÊµÏÖÀà£¬Éú³ÉÆäÖĞµÄinvoke()·½·¨µÄ×Ö½ÚÂë£¬ÒÔºó¶Ô¸ÃJava·½·¨µÄ·´Éäµ÷ÓÃ¾Í»áÊ¹ÓÃJava°æ¡£
+ *      å®é™…çš„MethodAccessorå®ç°æœ‰ä¸¤ä¸ªç‰ˆæœ¬ï¼Œä¸€ä¸ªæ˜¯Javaå®ç°çš„ï¼Œå¦ä¸€ä¸ªæ˜¯native codeå®ç°çš„ã€‚</br>
+ *      Javaå®ç°çš„ç‰ˆæœ¬åœ¨åˆå§‹åŒ–æ—¶éœ€è¦è¾ƒå¤šæ—¶é—´ï¼Œä½†é•¿ä¹…æ¥è¯´æ€§èƒ½è¾ƒå¥½ï¼›nativeç‰ˆæœ¬æ­£å¥½ç›¸åï¼Œå¯åŠ¨æ—¶ç›¸å¯¹è¾ƒå¿«ï¼Œä½†è¿è¡Œæ—¶é—´é•¿äº†ä¹‹åé€Ÿåº¦å°±æ¯”ä¸è¿‡Javaç‰ˆäº†ã€‚è¿™æ˜¯HotSpotçš„ä¼˜åŒ–æ–¹å¼å¸¦æ¥çš„æ€§èƒ½ç‰¹æ€§ï¼ŒåŒæ—¶ä¹Ÿæ˜¯è®¸å¤šè™šæ‹Ÿæœºçš„å…±åŒç‚¹ï¼šè·¨è¶Šnativeè¾¹ç•Œä¼šå¯¹ä¼˜åŒ–æœ‰é˜»ç¢ä½œç”¨ï¼Œå®ƒå°±åƒä¸ªé»‘ç®±ä¸€æ ·è®©è™šæ‹Ÿæœºéš¾ä»¥åˆ†æä¹Ÿå°†å…¶å†…è”ï¼Œäºæ˜¯è¿è¡Œæ—¶é—´é•¿äº†ä¹‹ååè€Œæ˜¯æ‰˜ç®¡ç‰ˆæœ¬çš„ä»£ç æ›´å¿«äº›ã€‚</br>
+ *      ä¸ºäº†æƒè¡¡ä¸¤ä¸ªç‰ˆæœ¬çš„æ€§èƒ½ï¼ŒSunçš„JDKä½¿ç”¨äº†â€œinflationâ€çš„æŠ€å·§ï¼šè®©Javaæ–¹æ³•åœ¨è¢«åå°„è°ƒç”¨æ—¶ï¼Œå¼€å¤´è‹¥å¹²æ¬¡ä½¿ç”¨nativeç‰ˆï¼Œç­‰åå°„è°ƒç”¨æ¬¡æ•°è¶…è¿‡é˜ˆå€¼æ—¶åˆ™ç”Ÿæˆä¸€ä¸ªä¸“ç”¨çš„MethodAccessorå®ç°ç±»ï¼Œç”Ÿæˆå…¶ä¸­çš„invoke()æ–¹æ³•çš„å­—èŠ‚ç ï¼Œä»¥åå¯¹è¯¥Javaæ–¹æ³•çš„åå°„è°ƒç”¨å°±ä¼šä½¿ç”¨Javaç‰ˆã€‚
  */
 public class MethodAccessorTest {
 
-    // ÔËĞĞÊ±Ìí¼Ójvm²ÎÊı£º-verbose
+    // è¿è¡Œæ—¶æ·»åŠ jvmå‚æ•°ï¼š-verbose
     @SuppressWarnings("static-access")
     public static void main(String[] args) throws Exception {
 
-        // ãĞÖµ´ïµ½ºó´¥·¢Loaded sun.reflect.GeneratedMethodAccessor1 from __JVM_DefineClass__
-        // ºóĞøÃ¿µ÷ÓÃÒ»´ÎÀÛ¼Ó£¬Éú³É·½·¨+Êı×Ö {@link sun.reflect.MethodAccessorGenerator}
+        // é˜ˆå€¼è¾¾åˆ°åè§¦å‘Loaded sun.reflect.GeneratedMethodAccessor1 from __JVM_DefineClass__
+        // åç»­æ¯è°ƒç”¨ä¸€æ¬¡ç´¯åŠ ï¼Œç”Ÿæˆæ–¹æ³•+æ•°å­— {@link sun.reflect.MethodAccessorGenerator}
         int threshold = 16;
 
         Class<?> clz = Class.forName("com.wjy.my.java.explore.pojo.User");

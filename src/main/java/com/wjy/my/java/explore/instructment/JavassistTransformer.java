@@ -12,13 +12,13 @@ import javassist.CtMethod;
 import javassist.NotFoundException;
 
 /**
- * Ê¹ÓÃJavassistÔö¼Ó×Ö½ÚÂë
+ * ä½¿ç”¨Javassistå¢åŠ å­—èŠ‚ç 
  */
 public class JavassistTransformer implements ClassFileTransformer {
 
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
-            ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
+                            ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
         System.out.println("transform " + className);
         if (className.equals("com/wjy/my/java/explore/pojo/User")) {
             ClassPool classPool = ClassPool.getDefault();
